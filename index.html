@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stela – Pagëzimi</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fffafc;
+      color: #2b2b2b;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1.name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 72px;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: #d4af37;
+      margin: 25px auto;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .date-box {
+      margin: 40px 0;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .date {
+      font-size: 52px;
+      color: #d4af37;
+    }
+
+    .time {
+      font-size: 20px;
+    }
+
+    .countdown {
+      font-size: 20px;
+      margin: 30px 0;
+      color: #b38b9d;
+    }
+
+    .section {
+      margin: 60px 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .music-btn {
+      margin-top: 30px;
+      background: none;
+      border: 1px solid #d4af37;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #2b2b2b;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #d4af37;
+    }
+
+    @media (max-width: 600px) {
+      h1.name { font-size: 56px; }
+      .date { font-size: 42px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1 class="name">Stela</h1>
+    <h2>Pagëzimi i Shenjtë</h2>
+
+    <div class="divider"></div>
+
+    <p>
+      Me bekimin e Zotit, ju ftojmë në një ditë të shenjtë!  
+      Do të jetë nder për ne të merrni pjesë familjarisht në pagëzimin e vajzës sonë.
+    </p>
+
+    <div class="section">
+      <p>
+        Ajo ka vendosur të ndjekë zërin e saj të brendshëm për të marrë bekimin e shenjtë e udhëhequr nga kumbari
+      </p>
+      <h2 style="margin-top:15px;">Anastas Mëngri</h2>
+    </div>
+
+    <div class="date-box">
+      <div>E DIELË</div>
+      <div class="date">16 GUSHT 2026</div>
+      <div class="time">ORA 11:00</div>
+    </div>
+
+    <div id="countdown" class="countdown"></div>
+
+    <div class="section">
+      <h2>Kisha</h2>
+      <p>Ngjallja e Krishtit – Pogradec</p>
+      <iframe src="https://www.google.com/maps?q=Ngjallja%20e%20Krishtit%20Pogradec&output=embed"></iframe>
+    </div>
+
+    <div class="section">
+      <h2>Pas Pagëzimit</h2>
+      <p>
+        Pas pagëzimit, gëzimin do ta ndajmë së bashku në drekën festive ku do të kemi mundësinë t’ju falënderojmë për dashurinë tuaj.
+      </p>
+      <p style="margin-top:10px;"><strong>Lokali: Klajd Fer – Pogradec</strong></p>
+      <iframe src="https://www.google.com/maps?q=Klajd%20Fer%20Pogradec&output=embed"></iframe>
+    </div>
+
+    <button class="music-btn" onclick="toggleMusic()">🎵 Muzikë</button>
+    <audio id="music" loop>
+      <source src="https://cdn.pixabay.com/audio/2022/10/09/audio_0d1b6b3b65.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer>
+      Me dashuri dhe mirënjohje<br/>
+      Gentian & Kostandina
+    </footer>
+
+  </div>
+
+  <script>
+    const targetDate = new Date("August 16, 2026 11:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdown.innerHTML = "Sot është dita e pagëzimit 🤍";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      countdown.innerHTML = `${days} ditë • ${hours} orë • ${minutes} minuta`;
+    }, 1000);
+
+    function toggleMusic() {
+      const music = document.getElementById("music");
+      music.paused ? music.play() : music.pause();
+    }
+  </script>
+</body>
+</html>
